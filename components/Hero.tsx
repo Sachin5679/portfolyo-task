@@ -1,27 +1,34 @@
 "use client"
-import { useState, useEffect } from 'react';
 import useUserData from '@/hooks/useUserData';
 import React from 'react';
-import axios from 'axios';
 
 const Hero = () => {
   const { userData } = useUserData()
+  const socialHandles = userData ? userData.social_handles : [];
   return (
-    <section className="">
+    <section className="w-screen p-2">
       {userData && (
         <>
-        <div className='flex items-center'>
-          <div className='text-left pt-4 mr-4'>
-            <h1 className="text-7xl font-bold text-gray-900 mb-4">{userData.about.name}</h1>
-            <h2 className="text-lg text-gray-600 mb-8">{userData.about.title}</h2>
-            <p>{userData.about.subTitle}</p>
-          </div>
-          <div>
-            <img width={200} className='rounded-full' src={userData.about.avatar.url} alt="User Avatar" />
-          </div>
-        </div>
+          <div className='flex items-center justify-center'>
+            <div className='text-left pt-4 mr-4'>
+              <h1 className="text-7xl font-bold text-blue-700 mb-4">{userData.about.name}</h1>
+              <h2 className="text-lg text-gray-600 mb-8">{userData.about.title}</h2>
+              <p>{userData.about.subTitle}</p>
+              <div className='flex mt-2'>
+                {socialHandles.map((handle: any) => (
+                    <div className='m-2 hover:outline hover:rounded-full hover:p-1 hover:shadow-2xl transition duration-300'>
+                      <a key={handle._id} href={handle.url} target="_blank" rel="noopener noreferrer">
+                        <img width={50} src={handle.image.url} alt={handle.platform} />
+                      </a>
+                    </div>
+                ))}
+              </div>
 
-          
+            </div>
+            <div className='ml-4'>
+              <img width={350} className='rounded-full' src={userData.about.avatar.url} alt="User Avatar" />
+            </div>
+          </div>
         </>
       )}
 
