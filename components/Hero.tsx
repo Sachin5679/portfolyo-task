@@ -6,13 +6,13 @@ const Hero = () => {
   const { userData } = useUserData()
   const socialHandles = userData ? userData.social_handles : [];
   return (
-    <section className="w-screen p-2">
+    <section className="w-screen h-screen p-2">
       {userData && (
         <>
           <div className='flex items-center justify-center'>
             <div className='text-left pt-4 mr-4'>
               <h1 className="text-7xl font-bold text-blue-700 mb-4">{userData.about.name}</h1>
-              <h2 className="text-lg text-gray-600 mb-8">{userData.about.title}</h2>
+              <h2 className="text-4xl text-gray-600 mb-8">{userData.about.title}</h2>
               <p>{userData.about.subTitle}</p>
               <div className='flex mt-2'>
                 {socialHandles.map((handle: any) => (
@@ -26,7 +26,7 @@ const Hero = () => {
 
             </div>
             <div className='ml-4'>
-              <img width={350} className='rounded-full' src={userData.about.avatar.url} alt="User Avatar" />
+              <img width={350} className='rounded-full' src={userData.about.avatar.url} alt={userData.about.alternateAvatars.url} />
             </div>
           </div>
         </>

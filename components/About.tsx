@@ -1,23 +1,27 @@
 "use client"
 import React from 'react';
 import useUserData from '@/hooks/useUserData';
+import Skills from './Skills';
 
 const About = () => {
   const { userData } = useUserData();
   return (
-    <section id='about' className="mt-12 p-5 h-screen w-screen flex justify-between">
-      <div className='w-1/2 flex items-center border-r border-blue-700 pr-8'>
+    <section id='about' className="p-5 h-screen w-screen flex ">
+      <div className='w-1/2 flex items-center justify-center mt-4'>
+        {/* <h1 className='text-blue-700 text-7xl'>ABOUT</h1> */}
         {userData && (
           <div>
-            <p className="text-2xl text-wrap text-gray-600 mb-8 ml-8">
+            <p className="text-3xl text-wrap text-gray-600 mt-8 mb-8 ml-8">
               {userData.about.description}
             </p>
           </div>
         )}
       </div>
 
+      {/* <div className="w-1 bg-blue-700"></div> */}
+
       <div className="w-1/2 flex items-center justify-center">
-        <h1 className="text-7xl font-bold text-blue-700">ABOUT</h1>
+        <Skills />
       </div>
     </section>
   );
